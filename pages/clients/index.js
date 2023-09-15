@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function ClientsListPage() {
     const clients = [
-        { id: 1, name: "Jim" },
-        { id: 2, name: "My" },
+        { id: "jim", name: "Jim" },
+        { id: "my", name: "My" },
     ];
     return (
         <div>
