@@ -5,9 +5,9 @@ import fs from "fs/promises";
 export default function ProductDetailPage(props) {
     const { loadedProduct } = props;
 
-    // if (!loadedProduct) {
-    //     return <p>Loading...</p>
-    // }
+    if (!loadedProduct) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <Fragment>
@@ -35,6 +35,12 @@ export async function getStaticProps(context) {
     const data = await fetchData();
     const product = data.products.find((product) => productId === product.id);
 
+    if (!product) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {
             loadedProduct: product,
@@ -50,13 +56,13 @@ export async function getStaticPaths() {
 
     return {
         // paths: [
-        //     { params: { pid: "p1" } },
-        //     { params: { pid: "p2" } },
-        //     { params: { pid: "p3" } },
+            // { params: { pid: "p1" } },
+            // { params: { pid: "p2" } },
+            // { params: { pid: "p3" } },
         // ],
         paths: paths,
-        fallback: false,
-        // fallback: true,
+        // fallback: false,
+        fallback: true,
         // fallback: "blocking",
     };
 }
