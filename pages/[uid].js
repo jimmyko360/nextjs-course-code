@@ -7,6 +7,8 @@ export async function getServerSideProps(context) {
 
     const uid = params.uid
 
+    // console.log('server side code')
+
     return {
         props: {
             uid: uid
